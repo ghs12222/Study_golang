@@ -6,14 +6,15 @@ import (
 )
 
 func main() {
-	runtime.GOMAXPROCS(runtime.NumCPU())
-	fmt.Println(runtime.GOMAXPROCS(0))
+	runtime.GOMAXPROCS(1)
+	fmt.Println(runtime.GOMAXPROCS(1))
 
 	s := "Hello, world"
 
 	for i := 0; i < 100; i++ {
-		go func(n int) {
-			fmt.Println(s, n)
-		}(i)
+		go func() {
+			fmt.Println(s, i)
+		}()
 	}
+	fmt.Scanln()
 }
